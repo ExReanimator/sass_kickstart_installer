@@ -28,6 +28,8 @@ else
   exit 1
 fi
 
+RVMBIN=$HOME/.rvm/bin/
+
 if [[ -s $RVMBIN/gem ]]
 then
   echo "RMV already installed"
@@ -37,7 +39,6 @@ fi
 
 
 alert "Ruby"
-RVMBIN=$HOME/.rvm/bin/
 $RVMBIN/rvm list | grep "ruby-1.9.3" 
 if [ $? -ne 0 ]; 
 then
