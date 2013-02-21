@@ -52,7 +52,7 @@ else
   then
     LOCATION="`pwd`/sass_kickstart"
   else
-    LOCATION=$LOC
+    LOCATION=${LOC/\~/$HOME}
   fi
 
   if [[ ! -d $LOCATION ]]; then
