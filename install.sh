@@ -22,7 +22,6 @@ fi
 
 if [[ -s $HOME/.rvm/scripts/rvm ]]
 then
-  echo "RMV successfully installed"
   source $HOME/.rvm/scripts/rvm
 else
   echo "Can not install RVM"
@@ -46,8 +45,7 @@ if [[ "$STR" == "n" ]];
 then
   exit 1
 else
-  install_sass_kickstart()
-  exit 0
+  install_sass_kickstart
 fi
 
 install_sass_kickstart() {
