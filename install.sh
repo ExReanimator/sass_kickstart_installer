@@ -13,6 +13,7 @@ sudo apt-get update && sudo apt-get --no-install-recommends install bash curl gi
 
 alert "Ruby version manager (RVM)"
 if [[ ! -s $HOME/.rvm/scripts/rvm ]]
+then
   curl -L https://get.rvm.io | bash -s stable
 fi
 
