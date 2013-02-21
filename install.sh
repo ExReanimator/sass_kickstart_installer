@@ -39,6 +39,7 @@ else
   echo "Ruby 1.9.3 already installed"
 fi
 
+source $HOME/.rvm/scripts/rvm
 $RVMBIN/rvm use 1.9.3
 
 if [[ -s $RVMBIN/gem ]]
