@@ -30,14 +30,6 @@ fi
 
 RVMBIN=$HOME/.rvm/bin/
 
-if [[ -s $RVMBIN/gem ]]
-then
-  echo "RMV already installed"
-else
-  $RVMBIN/rvm rubygems current
-fi
-
-
 alert "Ruby"
 $RVMBIN/rvm list | grep "ruby-1.9.3" 
 if [ $? -ne 0 ]; 
@@ -45,6 +37,15 @@ then
   $RVMBIN/rvm install ruby-1.9.3
 else
   echo "Ruby 1.9.3 already installed"
+fi
+
+$RVMBIN/rvm use 1.9.3
+
+if [[ -s $RVMBIN/gem ]]
+then
+  echo "RubyGems already installed"
+else
+  $RVMBIN/rvm rubygems current
 fi
 
 echo -e "\n\n\nEnvironment ready!\n"
