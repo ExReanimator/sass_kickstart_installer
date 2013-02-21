@@ -25,7 +25,7 @@ else
   exit 1
 fi
 
-RVMBIN=$HOME/.rvm/bin/
+RVMBIN=$HOME/.rvm/bin
 
 alert "Ruby"
 $RVMBIN/rvm list | grep "ruby-1.9.3" 
@@ -65,12 +65,15 @@ else
     git clone git://github.com/ExReanimator/sass_kickstart.git $LOCATION
   fi
 
+  $RVMBIN/rvm rvmrc trust $LOCATION
+
   cd $LOCATION
 
   gem install bundler --no-ri --no-rdoc
   bundle install
 
-  echo "Finished. Now you can change directory and run server:"
+  echo "Finished. NOW YOU MUST RELOAD TERMINAL SESSION!"
+  echo "To run server:"
   echo "cd $LOCATION"
   echo "unicorn"
 fi
