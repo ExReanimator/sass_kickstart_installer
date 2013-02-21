@@ -47,6 +47,7 @@ then
   exit 1
 else
   install_sass_kickstart()
+  exit 0
 fi
 
 install_sass_kickstart() {
