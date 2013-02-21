@@ -45,10 +45,6 @@ if [[ "$STR" == "n" ]];
 then
   exit 1
 else
-  install_sass_kickstart
-fi
-
-install_sass_kickstart() {
   read -p "Where project should be located? [`pwd`/sass_kickstart]: " LOC
   if [[ "$LOC" == "" ]]; 
   then
@@ -73,4 +69,4 @@ install_sass_kickstart() {
 
   echo "Finished. Now you can run server."
   echo "Type: unicorn"
-}
+fi
