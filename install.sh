@@ -12,11 +12,7 @@ alert "Installing dependencies"
 sudo apt-get update && sudo apt-get --no-install-recommends install bash curl git-core patch bzip2 build-essential openssl libreadline6 libreadline6-dev curl zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev libgdbm-dev ncurses-dev automake libtool bison pkg-config libffi-dev
 
 alert "Ruby version manager (RVM)"
-if [[ -s $HOME/.rvm/scripts/rvm ]]
-then
-  echo "RMV already installed"
-  source $HOME/.rvm/scripts/rvm
-else
+if [[ ! -s $HOME/.rvm/scripts/rvm ]]
   curl -L https://get.rvm.io | bash -s stable
 fi
 
@@ -39,8 +35,7 @@ else
   echo "Ruby 1.9.3 already installed"
 fi
 
-source $HOME/.rvm/scripts/rvm
-$RVMBIN/rvm use 1.9.3
+source $(rvm 1.9.3 do rvm env --path)
 
 if [[ -s $RVMBIN/gem ]]
 then
