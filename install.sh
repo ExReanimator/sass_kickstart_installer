@@ -25,6 +25,7 @@ then
   echo "RMV successfully installed"
   source $HOME/.rvm/scripts/rvm
 else
+  echo "Can not install RVM"
   exit 1
 fi
 
