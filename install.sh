@@ -28,12 +28,20 @@ else
   exit 1
 fi
 
+if [[ -s $RVMBIN/gem ]]
+then
+  echo "RMV already installed"
+else
+  $RVMBIN/rvm rubygems current
+fi
+
+
 alert "Ruby"
-RVM=$HOME/.rvm/bin/rvm
-$RVM list | grep "ruby-1.9.3" 
+RVMBIN=$HOME/.rvm/bin/
+$RVMBIN/rvm list | grep "ruby-1.9.3" 
 if [ $? -ne 0 ]; 
 then
-  $RVM install ruby-1.9.3
+  $RVMBIN/rvm install ruby-1.9.3
 else
   echo "Ruby 1.9.3 already installed"
 fi
@@ -64,8 +72,21 @@ else
   fi
 
   cd $LOCATION
-  $HOME/.rvm/bin/gem install bundler --no-ri --no-rdoc
-  $HOME/.rvm/bin/bundle install
+
+  if [[ -s $RVMBIN/gem ]]
+  then
+    $RVMBIN/gem install bundler --no-ri --no-rdoc
+  else
+    echo "RubyGems not installed"
+    exit 1
+  fi
+  if [[ -s $RVMBIN/bundle ]]
+  then
+    $RVMBIN/bundle install
+  else
+    echo "Gem bundler not installed"
+    exit 1
+  fi
 
   echo "Finished. Now you can run server."
   echo "Type: unicorn"
