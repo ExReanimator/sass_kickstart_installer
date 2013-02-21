@@ -70,6 +70,7 @@ else
   gem install bundler --no-ri --no-rdoc
   bundle install
 
-  echo "Finished. Now you can run server."
-  echo "Type: unicorn"
+  echo "Finished. Now you can change directory and run server:"
+  echo "cd $LOCATION"
+  echo "unicorn"
 fi
