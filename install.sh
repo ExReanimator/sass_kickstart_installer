@@ -64,7 +64,7 @@ install_sass_kickstart() {
     echo "Can't create directory for project"
     exit 1
   else
-    git clone git@github.com:ExReanimator/sass_kickstart.git $LOCATION
+    git clone git://github.com/ExReanimator/sass_kickstart.git $LOCATION
   fi
 
   cd $LOCATION
