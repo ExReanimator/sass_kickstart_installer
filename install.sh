@@ -38,12 +38,7 @@ fi
 
 source $(rvm 1.9.3 do rvm env --path)
 
-if [[ -s $RVMBIN/gem ]]
-then
-  echo "RubyGems already installed"
-else
-  $RVMBIN/rvm rubygems current
-fi
+$RVMBIN/rvm rubygems current
 
 echo -e "\n\n\nEnvironment ready!\n"
 
@@ -72,20 +67,8 @@ else
 
   cd $LOCATION
 
-  if [[ -s $RVMBIN/gem ]]
-  then
-    $RVMBIN/gem install bundler --no-ri --no-rdoc
-  else
-    echo "RubyGems not installed"
-    exit 1
-  fi
-  if [[ -s $RVMBIN/bundle ]]
-  then
-    $RVMBIN/bundle install
-  else
-    echo "Gem bundler not installed"
-    exit 1
-  fi
+  gem install bundler --no-ri --no-rdoc
+  bundle install
 
   echo "Finished. Now you can run server."
   echo "Type: unicorn"
