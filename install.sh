@@ -69,11 +69,17 @@ else
 
   cd $LOCATION
 
+  if [[ ! -s /usr/bin/heroku ]]
+  then
+    alert "Heroku support"
+    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+  fi
+
   gem install bundler --no-ri --no-rdoc
   bundle install
 
   echo "Finished. NOW YOU MUST RELOAD TERMINAL SESSION!"
-  echo "To run server:"
-  echo "cd $LOCATION"
-  echo "unicorn"
+  echo "After that to run server:"
+  echo "$ cd $LOCATION"
+  echo "$ unicorn"
 fi
