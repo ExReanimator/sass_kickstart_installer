@@ -36,6 +36,12 @@ else
   echo "Ruby 1.9.3 already installed"
 fi
 
+if [[ ! -s /usr/bin/heroku ]]
+then
+  alert "Heroku support"
+  wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+fi
+
 source $(rvm 1.9.3 do rvm env --path)
 
 $RVMBIN/rvm rubygems current
@@ -68,12 +74,6 @@ else
   $RVMBIN/rvm rvmrc trust $LOCATION
 
   cd $LOCATION
-
-  if [[ ! -s /usr/bin/heroku ]]
-  then
-    alert "Heroku support"
-    wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-  fi
 
   gem install bundler --no-ri --no-rdoc
   bundle install
